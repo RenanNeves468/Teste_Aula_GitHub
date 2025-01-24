@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Perguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #0078d7;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0078d7;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .question {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #0078d7;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Site de Perguntas</h1>
+    </header>
+    <main>
+        <form id="questionForm">
+            <label for="questionInput">Faça sua pergunta:</label>
+            <input type="text" id="questionInput" placeholder="Digite sua pergunta aqui..." required>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="questionsContainer">
+            <h2>Perguntas:</h2>
+            <!-- As perguntas aparecerão aqui -->
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('questionForm');
+        const questionInput = document.getElementById('questionInput');
+        const questionsContainer = document.getElementById('questionsContainer');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário
+
+            const questionText = questionInput.value.trim();
+            if (questionText) {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.textContent = questionText;
+
+                questionsContainer.appendChild(questionElement);
+
+                questionInput.value = ''; // Limpa o campo de entrada
+            }
+        });
+    </script>
+</body>
+</html>
